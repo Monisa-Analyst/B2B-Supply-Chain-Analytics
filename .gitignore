@@ -1,7 +1,8 @@
-# Data Files
-# Only the anonymized data should be pushed to GitHub
-scripts/customer_mapping.csv
-scripts/product_mapping.csv
+# Git Ignore Rules
+
+# Block all data files containing potential transactional records
+*.csv
+*.pbix
 *.xlsx
 *.xls
 *Anand_Engineering*
