@@ -1,0 +1,53 @@
+Customer,Recency,Frequency,Monetary,R_Score,F_Score,M_Score,RFM_Score,Segment
+Customer 27,103,6,389072.0,3,3,2,332,Potential / Others
+Customer 28,573,6,253450.0,1,3,2,132,At Risk
+Customer 29,422,2,238757.1,2,2,2,222,Lost Customers
+Customer 30,330,2,234955.0,2,2,2,222,Lost Customers
+Customer 31,324,1,223652.5,2,1,2,212,Lost Customers
+Customer 32,120,2,221940.0,3,2,2,322,Potential / Others
+Customer 33,1,1,211585.2,4,1,2,412,Potential / Others
+Customer 34,527,1,193494.33000000002,1,1,2,112,Lost Customers
+Customer 35,100,1,164400.0,3,1,2,312,Potential / Others
+Customer 36,210,4,160413.3,2,3,2,232,At Risk
+Customer 37,11,6,126840.08,4,3,2,432,Potential / Others
+Customer 38,541,2,125012.5,1,2,2,122,Lost Customers
+Customer 39,154,2,102955.0,3,2,2,322,Potential / Others
+Customer 40,41,2,72965.0,4,2,1,421,Potential / Others
+Customer 41,629,1,65855.9,1,1,1,111,Lost Customers
+Customer 42,804,2,57677.0,1,2,1,121,Lost Customers
+Customer 43,721,1,57540.0,1,1,1,111,Lost Customers
+Customer 44,469,2,43254.19,2,2,1,221,Lost Customers
+Customer 45,58,1,42384.0,3,1,1,311,Potential / Others
+Customer 46,193,1,38908.0,2,1,1,211,Lost Customers
+Customer 47,679,1,21900.0,1,1,1,111,Lost Customers
+Customer 48,293,1,19180.0,2,1,1,211,Lost Customers
+Customer 49,765,1,15410.0,1,1,1,111,Lost Customers
+Customer 50,512,1,13234.2,2,1,1,211,Lost Customers
+Customer 51,548,1,9864.0,1,1,1,111,Lost Customers
+Customer 52,139,1,2740.0,3,2,1,321,Potential / Others
+Customer A,2,116,19648063.98,4,4,4,444,Champions
+Customer B,2,81,15919154.6,4,4,4,444,Champions
+Customer C,4,68,13513350.98,4,4,4,444,Champions
+Customer D,4,74,12867516.85,4,4,4,444,Champions
+Customer E,25,57,11289804.29,4,4,4,444,Champions
+Customer F,4,47,4245777.71,4,4,4,444,Champions
+Customer G,7,14,3703125.0,4,3,4,434,Loyal Customers
+Customer H,47,10,3568472.48,3,3,4,334,Loyal Customers
+Customer I,338,11,2937197.8,2,3,4,234,Loyal Customers
+Customer J,151,30,2567900.6,3,4,4,344,Loyal Customers
+Customer K,560,33,2382196.64,1,4,4,144,Loyal Customers
+Customer L,303,43,1938997.76,2,4,4,244,Loyal Customers
+Customer M,635,20,1907760.34,1,4,4,144,Loyal Customers
+Customer N,576,6,1643903.05,1,3,3,133,Loyal Customers
+Customer O,100,26,1518461.88,3,4,3,343,Loyal Customers
+Customer P,67,4,1366792.56,3,3,3,333,Loyal Customers
+Customer Q,36,22,1317996.79,4,4,3,443,Loyal Customers
+Customer R,200,6,1193544.0,2,3,3,233,Loyal Customers
+Customer S,179,7,864333.0,2,3,3,233,Loyal Customers
+Customer T,1,21,837992.01,4,4,3,443,Loyal Customers
+Customer U,1,1,732950.0,4,2,3,423,Potential / Others
+Customer V,141,2,665410.0,3,2,3,323,Potential / Others
+Customer W,166,3,608870.25,2,2,3,223,Lost Customers
+Customer X,512,2,590415.2,2,2,3,223,Lost Customers
+Customer Y,139,4,589718.25,3,3,3,333,Loyal Customers
+Customer Z,127,5,441820.0,3,3,3,333,Loyal Customers

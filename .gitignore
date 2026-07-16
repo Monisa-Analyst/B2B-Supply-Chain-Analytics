@@ -1,0 +1,19 @@
+# Data Files
+# Only the anonymized data should be pushed to GitHub
+scripts/customer_mapping.csv
+scripts/product_mapping.csv
+*.xlsx
+*.xls
+*Anand_Engineering*
+
+# Local Development / Notebooks
+.ipynb_checkpoints/
+__pycache__/
+*.log
+*.metadata.json
+
+# Operating System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
