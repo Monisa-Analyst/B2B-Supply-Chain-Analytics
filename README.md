@@ -18,26 +18,33 @@ The platform provides visibility into:
 
 ## Repository Structure
 
-To ensure complete data privacy and prevent any accidental leakage of proprietary business transaction data, all raw data tables, CSV exports, and Power BI caching files (.pbix) are strictly excluded from the Git tree. Only the clean analytical code and output plots are tracked.
+To ensure complete data privacy and prevent any accidental leakage of proprietary business transaction data, all raw data tables, CSV exports, and Power BI caching files (.pbix) are strictly excluded from the Git tree. Only the clean analytical code, output plots, and documentations are tracked.
 
 ```
-Manufacturing-Sales-Customer-Intelligence-Platform/
+Manufacturing-Sales-Analytics/
+├── README.md
+├── data/
+│   └── sample_data.csv                   # Sample dataset structure for schema reference
 ├── sql/
-│   ├── 01_Revenue_Analysis.sql          # Monthly sales aggregates and threshold queries
-│   ├── 02_Customer_Analysis.sql         # Customer revenue rankings and share percentages
-│   ├── 03_Product_Analysis.sql          # Product sales volume and quantity rankings
-│   └── 04_Growth_Analysis.sql           # Period-over-period growth and cumulative trends
+│   ├── 01_data_cleaning.sql              # Table schema creation and initial data audits
+│   ├── 02_kpi_queries.sql                # Monthly sales trends and leaderboard rankings
+│   └── 03_rfm_analysis.sql               # MoM growth and window functions for scoring
 ├── python/
-│   └── Manufacturing_Sales_Analytics.ipynb # Main Python notebook for RFM, Pareto, ABC, and Cohort analysis
+│   ├── Manufacturing_Sales_Analytics.ipynb # Main Python notebook with outputs cleared
+│   ├── rfm.py                            # Standalone customer RFM segmentation code
+│   └── cohort.py                         # Standalone cohort customer retention code
+├── powerbi/
+│   ├── data_model.png                    # Star Schema relational database diagram
+│   ├── dax_measures.md                   # Calculations for executive KPI scorecards
+│   └── dashboard_screenshots/            # Strategic dashboard recommendation views
 ├── outputs/
 │   ├── RFM_Segments.png                 # Segment customer count & revenue contribution plot
 │   ├── Pareto_Chart.png                 # Dual-axis Pareto chart
 │   └── Cohort_Heatmap.png               # Customer retention rate monthly heatmap
-├── scripts/
-│   └── anonymize_data.py                # Standalone script to clean and mask raw data locally
 └── docs/
-    ├── Data_Privacy_Audit.md            # Privacy policies and anonymization details
-    └── GitHub_Publication_Checklist.md   # Step-by-step verification checklist
+    ├── business_problem.md               # Context, challenges, and project background
+    ├── methodology.md                    # Data preparation, database model, and analytics framework
+    └── recommendations.md                # Strategic takeaways and customer win-back plans
 ```
 
 ---
@@ -51,7 +58,7 @@ The analysis covers 2.5 years of transactional data (April 2024 to June 2026) co
 * Products: Product SKU identifier.
 * Quantity: Number of units sold.
 * Rate: Price per unit.
-* Revenue: Total transaction value (Quantity * Rate).
+* Value ( Quantity * Rate ): Total transaction value (Quantity * Rate).
 
 ---
 
@@ -59,6 +66,11 @@ The analysis covers 2.5 years of transactional data (April 2024 to June 2026) co
 
 1. Extraction and Cleaning: The raw ERP export was cleaned in Excel and Power Query. Extraneous header blocks, empty rows, and total lines were filtered. Corporate buyer names and physical parts were mapped to standardized, anonymized labels.
 2. Data Scaling: Rate and revenue figures were scaled by a factor of 1.37 in local environments. This prevents the reconstruction of the company's real financial statements while preserving all mathematical rankings, proportions, and analytics outputs.
+3. Database Modeling: Structured as a star schema model:
+   * FactSales: Transaction details (Date, Customer, Products, Quantity, Rate, Value).
+   * DimCustomer: Customer metadata (Region, Credit Terms).
+   * DimProduct: Product catalog attributes (Category, Weight).
+   * DimCalendar: Automated calendar dimension supporting time-intelligence queries.
 
 ---
 
@@ -98,6 +110,18 @@ Products were grouped into tiers based on cumulative revenue contribution:
 A monthly cohort retention analysis was executed using transaction month offsets from each customer's first purchase month.
 * B2B Purchase Cycles: While the analysis executed successfully, the retention matrix shows highly irregular purchasing intervals rather than traditional linear decay.
 * Operational Conclusion: Retention curves and heatmaps are less representative for B2B accounts that purchase on variable replenishment cycles or project-based orders compared to subscription (SaaS) or retail settings.
+
+---
+
+## Power BI Dashboard Pages
+
+The interactive dashboard is designed across five sections:
+
+1. Executive Overview: Central scorecard showing core KPIs (Total Revenue, Total Customers, Active SKUs, Quantity Sold) and trend lines for monthly revenue and regional distributions.
+2. Customer Intelligence: Detailed RFM segment dashboard showing segment distribution, customer count counts, and individual KPI drill-downs.
+3. Product Intelligence: Treemap visualizations of SKU contributions grouped by ABC class, allowing inventory managers to identify low-velocity SKUs.
+4. Pareto Analysis: Dual-axis bar and line visualization of customer contribution, highlighting the 80% cutoff boundary.
+5. Strategic Business Recommendations: Summary slide containing key analytical conclusions and data-driven recommendations for sales teams.
 
 ---
 

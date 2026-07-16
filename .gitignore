@@ -7,6 +7,12 @@
 *.xls
 *Anand_Engineering*
 
+# Exclude sample data file from ignore list so it can be uploaded
+!data/sample_data.csv
+
+# Block scripts and mapping logs from repository
+scripts/
+
 # Local Development / Notebooks
 .ipynb_checkpoints/
 __pycache__/

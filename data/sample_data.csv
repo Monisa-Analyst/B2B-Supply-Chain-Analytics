@@ -1,0 +1,6 @@
+Date,Customer,Products,Quantity,Rate,Value ( Quantity * Rate )
+04-Apr-2024,Customer A,Product 001,2000,108.09,216180.0
+04-Apr-2024,Customer B,Product 002,1025,27.4,28085.0
+08-Apr-2024,Customer C,Product 003,8200,41.37,339234.0
+08-Apr-2024,Customer C,Product 004,3000,9.64,28920.0
+12-Apr-2024,Customer D,Product 005,500,44.39,22195.0
