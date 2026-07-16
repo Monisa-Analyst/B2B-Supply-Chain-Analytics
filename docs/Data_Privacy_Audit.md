@@ -34,4 +34,4 @@ A python-based anonymization pipeline was executed to convert the raw ledger int
 
 * **FactSales.csv (Raw)**: Stored strictly in local scratch directory `D:\Manufacturing Sales Analytics\`. Excluded from the git repository using `.gitignore`.
 * **Anonymization Mappings**: Customer and product mapping CSV files (`customer_mapping.csv`, `product_mapping.csv`) are stored locally in the `scripts/` directory and are explicitly ignored by `.gitignore`.
-* **Power BI Cache**: Power BI files contain cached query data. The file `Manufacturing_Sales_Analytics.pbix` copied to the repository must be refreshed with the anonymized CSV before public hosting to overwrite the old cache.
+* **Power BI Cache**: Power BI files contain cached query data. The file `Manufacturing_Sales_Analytics_.pbix` copied to the repository must be refreshed with the anonymized CSV before public hosting to overwrite the old cache.

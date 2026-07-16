@@ -21,7 +21,7 @@ The platform provides visibility into:
 ```
 Manufacturing-Sales-Customer-Intelligence-Platform/
 ├── data/
-│   └── FactSales_Anonymized.csv         # Cleaned, anonymized sales transaction ledger
+│   └── FactSales.csv                    # Cleaned, anonymized sales transaction ledger
 ├── sql/
 │   ├── 01_Revenue_Analysis.sql          # Monthly sales aggregates and threshold queries
 │   ├── 02_Customer_Analysis.sql         # Customer revenue rankings and share percentages
