@@ -1,6 +1,6 @@
 # Manufacturing Sales & Customer Intelligence Platform
 
-An end-to-end data analytics and business intelligence project transforming raw B2B manufacturing sales register data into customer and product intelligence. This project utilizes SQL, Python, and Power BI to analyze purchasing behavior, segment customer accounts, classify product inventory, and map revenue concentration risks.
+An end-to-end data analytics and business intelligence project transforming raw B2B manufacturing sales register data into customer and product intelligence. This project utilizes SQL and Python to analyze purchasing behavior, segment customer accounts, classify product inventory, and map revenue concentration risks.
 
 ---
 
@@ -18,10 +18,10 @@ The platform provides visibility into:
 
 ## Repository Structure
 
+To ensure complete data privacy and prevent any accidental leakage of proprietary business transaction data, all raw data tables, CSV exports, and Power BI caching files (.pbix) are strictly excluded from the Git tree. Only the clean analytical code and output plots are tracked.
+
 ```
 Manufacturing-Sales-Customer-Intelligence-Platform/
-├── data/
-│   └── FactSales.csv                    # Cleaned, anonymized sales transaction ledger
 ├── sql/
 │   ├── 01_Revenue_Analysis.sql          # Monthly sales aggregates and threshold queries
 │   ├── 02_Customer_Analysis.sql         # Customer revenue rankings and share percentages
@@ -29,18 +29,12 @@ Manufacturing-Sales-Customer-Intelligence-Platform/
 │   └── 04_Growth_Analysis.sql           # Period-over-period growth and cumulative trends
 ├── python/
 │   └── Manufacturing_Sales_Analytics.ipynb # Main Python notebook for RFM, Pareto, ABC, and Cohort analysis
-├── dashboard/
-│   └── Manufacturing_Sales_Analytics.pbix # Power BI dashboard report template
 ├── outputs/
-│   ├── RFM_Output.csv                   # Calculated customer scores and segment labels
 │   ├── RFM_Segments.png                 # Segment customer count & revenue contribution plot
-│   ├── Pareto_Output.csv                # Cumulative revenue table by customer
 │   ├── Pareto_Chart.png                 # Dual-axis Pareto chart
-│   ├── ABC_Output.csv                   # ABC classification table by product SKU
-│   ├── Cohort_Output.csv                # Cohort retention percentage matrix
 │   └── Cohort_Heatmap.png               # Customer retention rate monthly heatmap
 ├── scripts/
-│   └── anonymize_data.py                # Standalone script to clean and mask raw data
+│   └── anonymize_data.py                # Standalone script to clean and mask raw data locally
 └── docs/
     ├── Data_Privacy_Audit.md            # Privacy policies and anonymization details
     └── GitHub_Publication_Checklist.md   # Step-by-step verification checklist
@@ -50,13 +44,13 @@ Manufacturing-Sales-Customer-Intelligence-Platform/
 
 ## Dataset Description
 
-The dataset covers 2.5 years of transactional data (April 2024 to June 2026) containing 1,839 sales line items. The schema is modeled as follows:
+The analysis covers 2.5 years of transactional data (April 2024 to June 2026) containing 1,839 sales line items. The schema is modeled as follows:
 
 * Date: Transaction timestamp (DD-MMM-YY format).
-* Customer: Anonymized buyer label (Customer A, Customer B, etc.).
-* Products: Anonymized SKU identifier (Product 001, Product 002, etc.).
+* Customer: Corporate buyer identifier.
+* Products: Product SKU identifier.
 * Quantity: Number of units sold.
-* Rate: Price per unit (scaled to protect financial confidentiality).
+* Rate: Price per unit.
 * Revenue: Total transaction value (Quantity * Rate).
 
 ---
@@ -64,12 +58,7 @@ The dataset covers 2.5 years of transactional data (April 2024 to June 2026) con
 ## Data Engineering and Modeling
 
 1. Extraction and Cleaning: The raw ERP export was cleaned in Excel and Power Query. Extraneous header blocks, empty rows, and total lines were filtered. Corporate buyer names and physical parts were mapped to standardized, anonymized labels.
-2. Data Scaling: Rate and revenue figures were scaled by a factor of 1.37. This prevents the reconstruction of the company's real financial statements while preserving all mathematical rankings, proportions, and analytics outputs.
-3. Star Schema Model: Loaded into Power BI using a star schema design:
-   * FactSales: Transaction details (Date, Customer, Products, Quantity, Rate, Revenue).
-   * DimCustomer (via customer_mapping): Customer metadata (aliases).
-   * DimProduct (via product_mapping): Product catalog attributes.
-   * DimCalendar (via DimCalendar DAX query): Automated calendar dimension supporting time-intelligence queries.
+2. Data Scaling: Rate and revenue figures were scaled by a factor of 1.37 in local environments. This prevents the reconstruction of the company's real financial statements while preserving all mathematical rankings, proportions, and analytics outputs.
 
 ---
 
@@ -101,26 +90,14 @@ The customer base exhibits extreme revenue concentration:
 
 ### 3. ABC Product Classification
 Products were grouped into tiers based on cumulative revenue contribution:
-* A Class (29 products): Drives 69.4% of revenue (approximately ₹7.77 Cr scaled). Requires tight inventory control and active replenishment monitoring.
-* B Class (58 products): Drives 20.5% of revenue (approximately ₹2.30 Cr scaled). Requires moderate control.
-* C Class (161 products): Drives 10.1% of revenue (approximately ₹1.12 Cr scaled). Low value; suggests opportunities for SKU rationalization to reduce warehousing costs.
+* A Class (29 products): Drives 69.4% of revenue. Requires tight inventory control and active replenishment monitoring.
+* B Class (58 products): Drives 20.5% of revenue. Requires moderate control.
+* C Class (161 products): Drives 10.1% of revenue. Low value; suggests opportunities for SKU rationalization to reduce warehousing costs.
 
 ### 4. Cohort Retention Analysis
 A monthly cohort retention analysis was executed using transaction month offsets from each customer's first purchase month.
 * B2B Purchase Cycles: While the analysis executed successfully, the retention matrix shows highly irregular purchasing intervals rather than traditional linear decay.
 * Operational Conclusion: Retention curves and heatmaps are less representative for B2B accounts that purchase on variable replenishment cycles or project-based orders compared to subscription (SaaS) or retail settings.
-
----
-
-## Power BI Dashboard Pages
-
-The interactive dashboard (dashboard/Manufacturing_Sales_Analytics.pbix) is designed across five sections:
-
-1. Executive Overview: Central scorecard showing core KPIs (Total Revenue, Total Customers, Active SKUs, Quantity Sold) and trend lines for monthly revenue and regional distributions.
-2. Customer Intelligence: Detailed RFM segment dashboard showing segment distribution, customer count counts, and individual KPI drill-downs.
-3. Product Intelligence: Treemap visualizations of SKU contributions grouped by ABC class, allowing inventory managers to identify low-velocity SKUs.
-4. Pareto Analysis: Dual-axis bar and line visualization of customer contribution, highlighting the 80% cutoff boundary.
-5. Strategic Business Recommendations: Summary slide containing key analytical conclusions and data-driven recommendations for sales teams.
 
 ---
 
@@ -137,4 +114,4 @@ The interactive dashboard (dashboard/Manufacturing_Sales_Analytics.pbix) is desi
 
 * Python: pandas, numpy, matplotlib
 * SQL: MySQL / Redshift compatible syntax for analytic aggregates
-* Power BI: Star schema data modeling, interactive dashboard design, DAX measures
+* Power BI: Star schema data modeling (implemented locally)
