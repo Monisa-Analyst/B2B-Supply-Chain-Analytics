@@ -1,13 +1,13 @@
 SELECT
 Products,
-SUM(`Revenue`) AS Revenue
+SUM(`Value ( Quantity * Rate )`) AS Revenue
 FROM factsales
 GROUP BY Products
 ORDER BY Revenue DESC;
 
 SELECT
 Products,
-SUM(`Revenue`) AS Revenue
+SUM(`Value ( Quantity * Rate )`) AS Revenue
 FROM factsales
 GROUP BY Products
 ORDER BY Revenue DESC
@@ -22,9 +22,9 @@ ORDER BY UnitsSold DESC;
 
 SELECT
 Products,
-SUM(`Revenue`) AS Revenue,
+SUM(`Value ( Quantity * Rate )`) AS Revenue,
 RANK() OVER(
-ORDER BY SUM(`Revenue`) DESC
+ORDER BY SUM(`Value ( Quantity * Rate )`) DESC
 ) AS ProductRank
 FROM factsales
 GROUP BY Products;

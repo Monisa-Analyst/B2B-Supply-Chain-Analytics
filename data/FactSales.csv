@@ -1,4 +1,4 @@
-Date,Customer,Products,Quantity,Rate,Revenue
+Date,Customer,Products,Quantity,Rate,Value ( Quantity * Rate )
 04-Apr-24,Customer D,Product 001,2000.0,108.09,216180.0
 04-Apr-24,Customer 42,Product 160,1025.0,27.4,28085.0
 08-Apr-24,Customer E,Product 005,8200.0,41.37,339234.0

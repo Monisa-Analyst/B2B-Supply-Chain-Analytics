@@ -5,7 +5,7 @@ DATE_FORMAT(
 STR_TO_DATE(`Date`,'%d-%b-%y'),
 '%Y-%m'
 ) AS Month,
-SUM(`Revenue`) AS Revenue
+SUM(`Value ( Quantity * Rate )`) AS Revenue
 FROM factsales
 GROUP BY Month
 )
@@ -25,7 +25,7 @@ DATE_FORMAT(
 STR_TO_DATE(`Date`,'%d-%b-%y'),
 '%Y-%m'
 ) AS Month,
-SUM(`Revenue`) AS Revenue
+SUM(`Value ( Quantity * Rate )`) AS Revenue
 FROM factsales
 GROUP BY Month
 )
@@ -53,7 +53,7 @@ DATE_FORMAT(
 STR_TO_DATE(`Date`,'%d-%b-%y'),
 '%Y-%m'
 ) AS Month,
-SUM(`Revenue`) AS Revenue
+SUM(`Value ( Quantity * Rate )`) AS Revenue
 FROM factsales
 GROUP BY Month
 )
